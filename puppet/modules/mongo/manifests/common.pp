@@ -1,0 +1,3 @@
+class mongo::common {
+  
+}
