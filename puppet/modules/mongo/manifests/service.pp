@@ -1,5 +1,5 @@
 class mongo::service {
-  service {'mongodb':
+  service { 'mongod':
     ensure     => 'running',
     enable     => 'true',
     start      => '/etc/init.d/mongod start',
