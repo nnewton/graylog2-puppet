@@ -8,11 +8,18 @@ class graylog2::server::config {
     notify  => Class['graylog2::server::service']
   }
 
-  file {'/etc/init/graylog2-server.conf':
-    source  => 'puppet:///modules/graylog2/server/graylog2-server.conf',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-    require => Class['graylog2::server::install'],
+  #file {'/etc/init/graylog2-server.conf':
+  #  source  => 'puppet:///modules/graylog2/server/graylog2-server.conf',
+  #  mode    => '0644',
+  #  owner   => 'root',
+  #  group   => 'root',
+  #  require => Class['graylog2::server::install'],
+  #}
+  
+  file { '/etc/init.d/graylog2-server':
+    source => 'puppet:///modules/graylog2/server/graylog2-server-start.conf',
+    mode  => '0644',
+    owner => 'root',
+    group => 'root',
   }
 }

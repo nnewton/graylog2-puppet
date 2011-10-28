@@ -1,7 +1,12 @@
 class graylog2::server::install {
-  package { 'graylog2-server':
-    ensure  => 'present',
-    require => [ Class['mongo::service'], Class['graylog2::common'], ],
+  file { '/opt/graylog2-server':
+    ensure => directory,
+    recurse => true,
+    purge => true,
+    owner => 'root',
+    group => 'root',
+    mode => 0644,
+    source => "puppet:///modules/graylog2/graylog2-server",
   }
 }
 
