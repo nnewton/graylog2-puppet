@@ -1,11 +1,11 @@
 class mongo::install {
   notify{'Installing mongodb': }
-  package { 'mongodb':
-    ensure  => 'installed',
+  package { 'mongo-10gen':
+    ensure  => installed,
     require => [ Class['mongo::common'], ],
   }
-  package { 'mongodb-server':
-    ensure => 'installed',
-    require => [ Class['mongo::common'], Package['mongodb'] ]
+  package { 'mongo-10gen-server':
+    ensure => installed,
+    require => [ Class['mongo::common'], Package['mongo-10gen'] ]
   }
 }
