@@ -1,5 +1,5 @@
 class git::install {
-  package { 'git-core':
-    ensure => present,
+  package { 'git-all':
+    ensure => installed,
   }
 }

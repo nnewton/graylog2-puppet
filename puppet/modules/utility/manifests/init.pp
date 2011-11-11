@@ -13,7 +13,7 @@ class utility {
     gpgcheck => 0,
     enabled  => 1,
   }
-
+  
   package { 'htop':
     ensure  => installed,
     require => Yumrepo['dag'],

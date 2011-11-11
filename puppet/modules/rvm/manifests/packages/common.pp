@@ -1,4 +1,6 @@
 class rvm::packages::common {
+  include git
+
   Exec {
     path => '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/rvm/bin',
   }
@@ -11,10 +13,16 @@ class rvm::packages::common {
   exec { 'install-rvm':
     command => "bash /tmp/rvm",
     creates => '/usr/local/rvm/bin/rvm',
-    require => Exec['download-rvm-install'],
+    require => [ Exec['download-rvm-install'], Package['git-all'] ],
+    unless  => 'rvm notes',
+  }
+  exec { 'remove-rvm':
+    command => '/bin/rm -rf /tmp/rvm',
+    require => Exec['install-rvm'],
+    unless  => 'test -e /tmp/rvm',
   }
   file { '/tmp/rvm':
     ensure  => absent,
-    require => Exec['install-rvm'],
+    require => Exec['remove-rvm'],
   }
 }
