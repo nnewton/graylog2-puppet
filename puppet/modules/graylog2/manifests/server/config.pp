@@ -15,9 +15,10 @@ class graylog2::server::config {
   #  group   => 'root',
   #  require => Class['graylog2::server::install'],
   #}
-  
-  file { '/etc/init.d/graylog2-server':
-    source => 'puppet:///modules/graylog2/server/graylog2-server-start.conf',
+
+  file { "graylog2_initd":
+    path => "/etc/init.d/graylog2-server",
+    source => 'puppet:///modules/graylog2/server/graylog2-server',
     mode  => '0644',
     owner => 'root',
     group => 'root',
