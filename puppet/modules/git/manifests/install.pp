@@ -1,5 +1,6 @@
 class git::install {
   package { 'git-all':
-    ensure => installed,
+    ensure => [ latest, installed ],
+    require => Yumrepo["epel"],
   }
 }
