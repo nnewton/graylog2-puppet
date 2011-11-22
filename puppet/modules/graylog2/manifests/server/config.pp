@@ -1,5 +1,6 @@
 class graylog2::server::config {
-  file { '/etc/graylog2.conf':
+  file { "graylog2_conf":
+    path  => '/etc/graylog2.conf',
     source  => 'puppet:///modules/graylog2/graylog2.conf',
     mode    => '0644',
     owner   => 'root',
