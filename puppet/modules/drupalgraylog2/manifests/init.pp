@@ -10,7 +10,7 @@ class drupalgraylog2 {
       mode  => 755,
       owner => root,
       group => root;
-    "/opt/graylog2-server":
+    "/opt/graylog2":
       source => "puppet:///drupalgraylog2/graylog2-source",
       recurse => true;
   }
