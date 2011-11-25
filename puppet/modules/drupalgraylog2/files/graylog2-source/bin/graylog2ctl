@@ -7,7 +7,7 @@ GRAYLOG=/opt/graylog2
 
 start() {
   echo "Starting graylog2-server ..."
-  java -jar $GRAYLOG/graylog2-server.jar &
+  $NOHUP java -jar $GRAYLOG/graylog2-server.jar > /var/log/graylog2.log 2>&1 &
 }
 
 stop() {
