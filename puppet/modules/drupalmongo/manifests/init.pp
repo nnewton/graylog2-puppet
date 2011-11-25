@@ -13,7 +13,8 @@ class drupalmongo {
     "mongo-10gen-server":
       ensure => installed,
       require => [ Yumrepo["10gen"], Package["mongo-10gen"] ];
-    }
+  }
+
   file { "/etc/mongodb.conf":
     source  => "puppet:///drupalmongo/mongodb.conf",
     mode    => 755,
@@ -23,11 +24,11 @@ class drupalmongo {
   }
 
   service { "mongod":
-    ensure     => running,
-    enable     => true,
-    start      => "/etc/init.d/mongod start",
-    stop        => "/etc/init.d/mongod stop",
-    restart    => "/etc/init.d/mongod restart",
-    require    => [ File["/etc/mongodb.conf"], Package["mongo-10gen"], Package["mongo-10gen-server"] ],
+    ensure    => running,
+    enable    => true,
+    start     => "/etc/init.d/mongod start",
+    stop      => "/etc/init.d/mongod stop",
+    restart   => "/etc/init.d/mongod restart",
+    require   => [ File["/etc/mongodb.conf"], Package["mongo-10gen"], Package["mongo-10gen-server"] ],
   }
 }
